@@ -1,0 +1,38 @@
+
+//this is just printing the value
+
+public class subseqence {
+    public static void main(String[] args) {
+        subseq(" ","abc");
+    }
+    static void subseq(String p,String up)
+    {
+        if(up.isEmpty())
+        {
+            System.out.println(p); //unprocessed or up is my original string
+            return ;
+        }
+        char ch=up.charAt(0);
+        subseq(p+ch,up.substring(1));  //here i am taking a charecter
+        subseq(p,up.substring(1));    //here i am skipping a character
+    }
+}
+
+//here i am returning all the value in a arrayList an then print it lilke  [ abc,  ab,  ac,  a,  bc,  b,  c,  ];
+
+static ArrayList<String> subseqRet(String p,String up)
+    {
+        if(up.isEmpty())
+        {
+            ArrayList<String> list=new ArrayList<>();
+            list.add(p);
+            return list;
+        }
+        char ch=up.charAt(0);
+        ArrayList<String>left=subseqRet(p+ch,up.substring(1));
+        ArrayList<String>right=subseqRet(p,up.substring(1));
+        left.addAll(right); //here i am adding value from left and right recursion call
+        // i can also add it in right 
+        return left;
+    }
+}
