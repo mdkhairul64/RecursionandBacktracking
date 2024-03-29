@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void generateLists(int n, vector<int>& currentList, int index) {
+    
+    if (index == n) {
+        for (int i=0;i<currentList.size();i++) {
+                if(i == currentList.size()-1)
+                {
+                    cout<<currentList[i];
+                }
+                else{
+                    cout<<currentList[i]<<" ";
+                }
+                 
+        }
+        cout << endl;
+        return;
+    }
+
+    
+    if (index % 2 == 0) {
+        for (int digit = 0; digit <= 4; digit += 2) {
+            currentList.push_back(digit);
+            generateLists(n, currentList, index + 1);
+            currentList.pop_back();
+        }
+    } else {
+        for (int digit = 1; digit <= 4; digit += 2) {
+            currentList.push_back(digit);
+            generateLists(n, currentList, index + 1);
+            currentList.pop_back();
+        }
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+
+    vector<int> currentList;
+    generateLists(n, currentList, 0);
+
+    return 0;
+}
