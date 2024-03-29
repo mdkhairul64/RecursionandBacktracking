@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void printCombinations(int n, int k, int start, vector<int>& combination) {
+    if (k == 0) {
+        for (int i = 0;i<combination.size();i++) {
+            cout << combination[i] << " ";
+        }
+        cout << endl;
+        return;
+    }
+    for (int i = start; i >= 0; --i) {
+        combination.push_back(i);
+        printCombinations(n, k - 1, i - 1, combination);
+        combination.pop_back();
+    }
+}
+
+int main() {
+    int n, k;
+    cin >> n >> k;
+
+    vector<int> combination;
+    printCombinations(n, k, n - 1, combination);
+
+    return 0;
+}
