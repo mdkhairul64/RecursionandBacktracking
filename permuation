@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void permutation(string &s,int l,int r)
+{
+    if(l == r)
+    {
+        cout<<s<<endl;
+        return ;
+        
+    }
+    else{
+        /// here the value of the i will be 0 then 1 and so on but the value of the l will be increase
+        // here the i =l mean i just intialize the value of the i
+        // mut kotha holo i er man static rakhbo and l er man barabo and swap korbo
+        
+        for(int i=l;i<=r;i++)
+        {
+            swap(s[i],s[l]);
+            permutation(s,l+1,r);
+            swap(s[i],s[l]);
+        }
+    }
+
+}
+
+int main()
+{
+    int n;
+    cin>>n;
+
+    string s;
+    cin>>s;
+
+    permutation(s,0,n-1);
+
+    return 0;
+}
+
